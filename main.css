@@ -1,0 +1,41 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#score{
+    display: flex;
+}
+
+#score h2{
+    margin: 30px;
+}
+
+#buttonSection{
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 600px;
+    border: solid 2px;
+    border-color: black;
+}
+
+#buttonSection button{
+    width:200px;
+    height: 200px;
+    font-size: 60px;
+}
+
+button:hover{
+    background: rgb(161, 161, 161);
+}
+
+#restartButton{
+    width: 200px;
+    font-size: 40px;
+    margin: 40px;
+    color: aliceblue;
+    background: red;
+}
