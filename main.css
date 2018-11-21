@@ -5,11 +5,11 @@ body{
     flex-direction: column;
 }
 
-#score{
+#scoreSection{
     display: flex;
 }
 
-#score h2{
+#scoreSection h2{
     margin: 30px;
 }
 
