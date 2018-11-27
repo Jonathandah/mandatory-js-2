@@ -2,31 +2,37 @@ let player = "x";
 let numberX = 0; // poäng för X
 let numberO = 0; // poäng för O
 let turn = 0; 
-let winner = document.querySelector("#winner");
-let scoreForX = document.querySelector("#scoreX");
-let scoreForO = document.querySelector("#scoreO");
-let buttonTiles = document.querySelectorAll(".buttonTile"); 
-
+let winner = $("#winner");
+let scoreForX = $("#scoreX");
+let scoreForO = $("#scoreO");
+let buttonTiles = $(".buttonTile"); 
+buttonTiles.on("click", addEvent);
+/* //javascript add event to buttons
 function addEvent(buttonTiles){ // functionen lägger till evenlyssnare på alla kanppar
     for(let i in buttonTiles){
         buttonTiles[i] = document.addEventListener("click", addTile);
     }
 }
 addEvent(buttonTiles);
+*/
 
 function addTile(e){
     if( player === "x" && e.target.textContent === ""){ // ändrar vilken symbol som sätts ut
         e.target.textContent = "x";
         player = "o";
-        ++turn  // varje gång if satsen körs pluusa turn med 1, när turn är 9 körs if satsen som kollar ifall matchen är lika.
+        turn++  // varje gång if satsen körs pluusa turn med 1, när turn är 9 körs if satsen som kollar ifall matchen är lika.
+        winCondtions();
     }
     
     else if (player === "o" && e.target.textContent === ""){
         e.target.textContent ="o";
         player = "x";
-        ++turn
+        turn++
+        winCondtions();
     }
+}
 
+function winCondtions(){
     if(turn === 9 && winner.textContent ==="Tic Tac Toe"){ //kollar om matchen är lika 
         winner.textContent = "Tie";
     } 
@@ -172,11 +178,27 @@ function removeEvent(buttonTiles){// functionen tar bort evenlyssnaren på alla 
 function clearBoard(){ // restart 
  for(let i = 0; i < buttonTiles.length; i++){
      buttonTiles[i].textContent = "";
-        addEvent(buttonTiles);
-        player = "x";
-        turn = 0;
-        winner.textContent = "Tic Tac Toe";
     }
+    player = "x";
+    turn = 0;
+    winner.textContent = "Tic Tac Toe";
+    addEvent(buttonTiles);
 }
 let restartButton = document.querySelector("#restartButton");
 restartButton.addEventListener("click", clearBoard);
+
+function newGame(){ // restart 
+    for(let i = 0; i < buttonTiles.length; i++){
+        buttonTiles[i].textContent = "";
+       }
+    scoreForX.textContent = "X-0";
+    scoreForO.textContent = "O-0";
+    numberX = 0;
+    numberO = 0;
+    player = "x";
+    turn = 0;
+    winner.textContent = "Tic Tac Toe";
+    addEvent(buttonTiles);
+   }
+   let newGameButton = document.querySelector("#newGameButton");
+   newGameButton.addEventListener("click", newGame);

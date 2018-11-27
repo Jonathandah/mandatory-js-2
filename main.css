@@ -31,11 +31,20 @@ body{
 button:hover{
     background: rgb(161, 161, 161);
 }
-
+#gameOptions{
+    display: flex;
+}
 #restartButton{
     width: 200px;
     font-size: 40px;
     margin: 40px;
     color: aliceblue;
     background: red;
+}
+#newGameButton{
+    width: 220px;
+    font-size: 40px;
+    margin: 40px;
+    color: aliceblue;
+    background: green;
 }
