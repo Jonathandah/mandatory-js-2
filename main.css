@@ -3,14 +3,22 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-image: url("simple-christmas-background3.jpg");
 }
 
 #scoreSection{
     display: flex;
+    font-size: 40px;
+    color: white;
 }
 
 #scoreSection h2{
     margin: 30px;
+}
+
+#winner{
+    font-size: 40px;
+    color: white;
 }
 
 #buttonSection{
@@ -19,7 +27,7 @@ body{
     width: 600px;
     height: 600px;
     border: solid 2px;
-    border-color: black;
+    box-shadow: 12px 10px 20px 0px #424141;
 }
 
 #buttonSection button{
@@ -28,8 +36,12 @@ body{
     font-size: 60px;
 }
 
+button{
+    background-color: rgba(251, 7, 7, 0.26);
+}
+
 button:hover{
-    background: rgb(161, 161, 161);
+    background: rgba(161, 74, 74, 0.383);
 }
 #gameOptions{
     display: flex;
@@ -39,12 +51,22 @@ button:hover{
     font-size: 40px;
     margin: 40px;
     color: aliceblue;
-    background: red;
+    background: green;
+    box-shadow: 12px 10px 20px 0px #424141;
 }
+#restartButton:hover{
+    background: rgb(0, 88, 0);
+}
+
 #newGameButton{
     width: 220px;
     font-size: 40px;
     margin: 40px;
     color: aliceblue;
-    background: green;
+    background: red;
+    box-shadow: 12px 10px 20px 0px #424141;
+}
+
+#newGameButton:hover{
+    background: rgb(192, 0, 0);
 }

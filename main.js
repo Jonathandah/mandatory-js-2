@@ -6,199 +6,148 @@ let winner = $("#winner");
 let scoreForX = $("#scoreX");
 let scoreForO = $("#scoreO");
 let buttonTiles = $(".buttonTile"); 
-buttonTiles.on("click", addEvent);
-/* //javascript add event to buttons
-function addEvent(buttonTiles){ // functionen lägger till evenlyssnare på alla kanppar
-    for(let i in buttonTiles){
-        buttonTiles[i] = document.addEventListener("click", addTile);
-    }
-}
-addEvent(buttonTiles);
-*/
 
-function addTile(e){
-    if( player === "x" && e.target.textContent === ""){ // ändrar vilken symbol som sätts ut
-        e.target.textContent = "x";
+function addEvent (){
+    buttonTiles.on("click", addTile);
+}
+addEvent();
+
+function addTile(){
+    if( player === "x" && $(this).text() === ""){ // ändrar vilken symbol som sätts ut
+        $(this).text("x");
         player = "o";
         turn++  // varje gång if satsen körs pluusa turn med 1, när turn är 9 körs if satsen som kollar ifall matchen är lika.
         winCondtions();
     }
     
-    else if (player === "o" && e.target.textContent === ""){
-        e.target.textContent ="o";
+    else if (player === "o" && $(this).text() === ""){
+        $(this).text("o");
         player = "x";
         turn++
         winCondtions();
     }
+    
 }
-
 function winCondtions(){
-    if(turn === 9 && winner.textContent ==="Tic Tac Toe"){ //kollar om matchen är lika 
-        winner.textContent = "Tie";
+    if(turn === 9 && winner.text() ==="Tic Tac Toe"){ //kollar om matchen är lika 
+        winner.text("Tie");
     } 
-  
+    
     for(let i = 0; i<buttonTiles.length; i++){ // hela loopen innehåller alla win-conditions
-        if(buttonTiles[0].textContent==="x" && buttonTiles[1].textContent==="x" && buttonTiles[2].textContent==="x" || buttonTiles[0].textContent==="o" && buttonTiles[1].textContent==="o" && buttonTiles[2].textContent==="o" ){
-            if(buttonTiles[0].textContent ==="x"){ // körs ifall X vann
-                 ++numberX;
-                scoreForX.textContent = "X-" + numberX
-                winner.textContent = "X WON!!";
-                removeEvent(buttonTiles);   // kör functionen som tar bort alla eventlyssnare
+        if($(buttonTiles[0]).text() ==="x" && $(buttonTiles[1]).text() ==="x" && $(buttonTiles[2]).text() ==="x" || $(buttonTiles[0]).text() ==="o" && $(buttonTiles[1]).text() ==="o" && $(buttonTiles[2]).text() ==="o" ){
+            if($(buttonTiles[0]).text() ==="x"){ // körs ifall X vann
+                winner.text("X WON!!");
+                removeEvent();   // kör functionen som tar bort alla eventlyssnare
                 break;
-            }
-            else{ // körs ifall O vann
-                 ++numberO;
-                scoreForO.textContent = "O-" + numberO
-                winner.textContent = "O WON!!";
-                removeEvent(buttonTiles);
+            }else{ // körs ifall O vann
+                removeEvent();
                 break;
             }
         }
-        else if(buttonTiles[3].textContent==="x" && buttonTiles[4].textContent==="x" && buttonTiles[5].textContent==="x" || buttonTiles[3].textContent==="o" && buttonTiles[4].textContent==="o" && buttonTiles[5].textContent==="o" ){
-            if(buttonTiles[3].textContent ==="x"){
-                 ++numberX;
-                scoreForX.textContent = "X-" + numberX
-                winner.textContent = "X WON!!";
-                removeEvent(buttonTiles);
+        else if($(buttonTiles[3]).text() ==="x" && $(buttonTiles[4]).text() ==="x" && $(buttonTiles[5]).text() ==="x" || $(buttonTiles[3]).text() ==="o" && $(buttonTiles[4]).text() ==="o" && $(buttonTiles[5]).text() ==="o" ){
+            if($(buttonTiles[3]).text() ==="x"){
+                winner.text("X WON!!");
+                removeEvent();
                 break;
-            }
-            else{
-                 ++numberO;
-                scoreForO.textContent = "O-" + numberO
-                winner.textContent = "O WON!!";
-                removeEvent(buttonTiles);
+            }else{
+                removeEvent();
                 break;
             }
         }
-        else if(buttonTiles[6].textContent==="x" && buttonTiles[7].textContent==="x" && buttonTiles[8].textContent==="x" || buttonTiles[6].textContent==="o" && buttonTiles[7].textContent==="o" && buttonTiles[8].textContent==="o" ){
-            if(buttonTiles[6].textContent ==="x"){
-                 ++numberX;
-                scoreForX.textContent = "X-" + numberX
-                winner.textContent = "X WON!!";
-                removeEvent(buttonTiles);
+        else if($(buttonTiles[6]).text() ==="x" && $(buttonTiles[7]).text() ==="x" && $(buttonTiles[8]).text() ==="x" || $(buttonTiles[6]).text() ==="o" && $(buttonTiles[7]).text() ==="o" && $(buttonTiles[8]).text() ==="o" ){
+            if($(buttonTiles[6]).text() ==="x"){
+                winner.text("X WON!!");
+                removeEvent();
                 break;
-            }
-            else{
-                 ++numberO;
-                scoreForO.textContent = "O-" + numberO
-                winner.textContent = "O WON!!";
-                removeEvent(buttonTiles);
+            }else{
+                removeEvent();
                 break;
             }
         }
-        else if(buttonTiles[0].textContent==="x" && buttonTiles[3].textContent==="x" && buttonTiles[6].textContent==="x" || buttonTiles[0].textContent==="o" && buttonTiles[3].textContent==="o" && buttonTiles[6].textContent==="o" ){
-            if(buttonTiles[0].textContent ==="x"){
-                 ++numberX;
-                scoreForX.textContent = "X-" + numberX
-                winner.textContent = "X WON!!";
-                removeEvent(buttonTiles);
+        else if($(buttonTiles[0]).text() ==="x" && $(buttonTiles[3]).text() ==="x" && $(buttonTiles[6]).text() ==="x" || $(buttonTiles[0]).text() ==="o" && $(buttonTiles[3]).text() ==="o" && $(buttonTiles[6]).text() ==="o" ){
+            if($(buttonTiles[0]).text() ==="x"){
+                winner.text("X WON!!");
+                removeEvent();
                 break;
-            }
-            else{
-                 ++numberO;
-                scoreForO.textContent = "O-" + numberO
-                winner.textContent = "O WON!!";
-                removeEvent(buttonTiles);
+            }else{
+                removeEvent();
                 break;
             }
         }
-        else if(buttonTiles[1].textContent==="x" && buttonTiles[4].textContent==="x" && buttonTiles[7].textContent==="x" || buttonTiles[1].textContent==="o" && buttonTiles[4].textContent==="o" && buttonTiles[7].textContent==="o" ){
-            if(buttonTiles[1].textContent ==="x"){
-                 ++numberX;
-                scoreForX.textContent = "X-" + numberX
-                winner.textContent = "X WON!!";
-                removeEvent(buttonTiles);
+        else if($(buttonTiles[1]).text() ==="x" && $(buttonTiles[4]).text() ==="x" && $(buttonTiles[7]).text() ==="x" || $(buttonTiles[1]).text() ==="o" && $(buttonTiles[4]).text() ==="o" && $(buttonTiles[7]).text() ==="o" ){
+            if($(buttonTiles[1]).text() ==="x"){
+                winner.text("X WON!!");
+                removeEvent();
                 break;
-            }
-            else{
-                 ++numberO;
-                scoreForO.textContent = "O-" + numberO
-                winner.textContent = "O WON!!";
-                removeEvent(buttonTiles);
+            }else{
+                removeEvent();
                 break;
             }
         }
-        else if(buttonTiles[2].textContent==="x" && buttonTiles[5].textContent==="x" && buttonTiles[8].textContent==="x" || buttonTiles[2].textContent==="o" && buttonTiles[5].textContent==="o" && buttonTiles[8].textContent==="o" ){
-            if(buttonTiles[2].textContent ==="x"){
-                 ++numberX;
-                scoreForX.textContent = "X-" + numberX
-                winner.textContent = "X WON!!";
-                removeEvent(buttonTiles);
+        else if($(buttonTiles[2]).text() ==="x" && $(buttonTiles[5]).text() ==="x" && $(buttonTiles[8]).text() ==="x" || $(buttonTiles[2]).text() ==="o" && $(buttonTiles[5]).text() ==="o" && $(buttonTiles[8]).text() ==="o" ){
+            if($(buttonTiles[2]).text() ==="x"){
+                winner.text("X WON!!");
+                removeEvent();
                 break;
-            }
-            else{
-                 ++numberO;
-                scoreForO.textContent = "O-" + numberO
-                winner.textContent = "O WON!!";
-                removeEvent(buttonTiles);
+            }else{
+                removeEvent();
                 break;
             }
         }
-        else if(buttonTiles[0].textContent==="x" && buttonTiles[4].textContent==="x" && buttonTiles[8].textContent==="x" || buttonTiles[0].textContent==="o" && buttonTiles[4].textContent==="o" && buttonTiles[8].textContent==="o" ){
-            if(buttonTiles[0].textContent ==="x"){
-                 ++numberX;
-                scoreForX.textContent = "X-" + numberX
-                winner.textContent = "X WON!!";
-                removeEvent(buttonTiles);
+        else if($(buttonTiles[0]).text() ==="x" && $(buttonTiles[4]).text() ==="x" && $(buttonTiles[8]).text() ==="x" || $(buttonTiles[0]).text() ==="o" && $(buttonTiles[4]).text() ==="o" && $(buttonTiles[8]).text() ==="o" ){
+            if($(buttonTiles[0]).text() ==="x"){
+                winner.text("X WON!!");
+                removeEvent();
                 break;
-            }
-            else{
-                 ++numberO;
-                scoreForO.textContent = "O-" + numberO
-                winner.textContent = "O WON!!";
-                removeEvent(buttonTiles);
+            }else{
+                removeEvent();
                 break;
             }
         }
-        else if(buttonTiles[2].textContent==="x" && buttonTiles[4].textContent==="x" && buttonTiles[6].textContent==="x" || buttonTiles[2].textContent==="o" && buttonTiles[4].textContent==="o" && buttonTiles[6].textContent==="o" ){
-            if(buttonTiles[2].textContent ==="x"){
-                 ++numberX;
-                scoreForX.textContent = "X-" + numberX
-                winner.textContent = "X WON!!";
-                removeEvent(buttonTiles);
+        else if($(buttonTiles[2]).text() ==="x" && $(buttonTiles[4]).text() ==="x" && $(buttonTiles[6]).text() ==="x" || $(buttonTiles[2]).text() ==="o" && $(buttonTiles[4]).text() ==="o" && $(buttonTiles[6]).text() ==="o" ){
+            if($(buttonTiles[2]).text() ==="x"){
+                winner.text("X WON!!");
+                removeEvent();
                 break;
-            }
-            else{
-                 ++numberO;
-                scoreForO.textContent = "O-" + numberO
-                winner.textContent = "O WON!!";
-                removeEvent(buttonTiles);
+            }else{
+                removeEvent();
                 break;
             }
         }
     }
 }
    
-function removeEvent(buttonTiles){// functionen tar bort evenlyssnaren på alla kanppar
-    for(let i in buttonTiles){
-        buttonTiles[i] = document.removeEventListener("click", addTile);
+function removeEvent(){// functionen tar bort evenlyssnaren på alla kanppar och lägger till poäng
+    buttonTiles.off("click". addTile);
+    if (winner.text() === "X WON!!"){
+        numberX++;
+        scoreForX.text("X-" + numberX);
+    }
+    else{
+        numberO++;
+        scoreForO.text("O-" + numberO);
+        winner.text("O WON!!");
     }
 }
 
-function clearBoard(){ // restart 
- for(let i = 0; i < buttonTiles.length; i++){
-     buttonTiles[i].textContent = "";
-    }
+function restart(){ // restart 
+    buttonTiles.text("");
     player = "x";
     turn = 0;
-    winner.textContent = "Tic Tac Toe";
-    addEvent(buttonTiles);
+    winner.text("Tic Tac Toe");
+    addEvent();
 }
-let restartButton = document.querySelector("#restartButton");
-restartButton.addEventListener("click", clearBoard);
+$("#restartButton").on("click", restart);
 
-function newGame(){ // restart 
-    for(let i = 0; i < buttonTiles.length; i++){
-        buttonTiles[i].textContent = "";
-       }
-    scoreForX.textContent = "X-0";
-    scoreForO.textContent = "O-0";
+function newGame(){ // new game
+    buttonTiles.text("");
+    scoreForX.text("X-0");
+    scoreForO.text("O-0");
     numberX = 0;
     numberO = 0;
     player = "x";
     turn = 0;
-    winner.textContent = "Tic Tac Toe";
-    addEvent(buttonTiles);
+    winner.text("Tic Tac Toe");
+    addEvent();
    }
-   let newGameButton = document.querySelector("#newGameButton");
-   newGameButton.addEventListener("click", newGame);
+$("#newGameButton").on("click", newGame);
