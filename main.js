@@ -117,20 +117,20 @@ function winCondtions(){
     }
 }
    
-function removeEvent(){// functionen tar bort evenlyssnaren på alla kanppar och lägger till poäng
+function removeEvent(){// functionen tar bort evenlyssnaren på alla kanppar och lägger till poäng och text
     buttonTiles.off("click". addTile);
     if (winner.text() === "X WON!!"){
         numberX++;
         scoreForX.text("X-" + numberX);
     }
     else{
+        winner.text("O WON!!");
         numberO++;
         scoreForO.text("O-" + numberO);
-        winner.text("O WON!!");
     }
 }
 
-function restart(){ // restart 
+function restart(){ // restart, 
     buttonTiles.text("");
     player = "x";
     turn = 0;
@@ -139,7 +139,7 @@ function restart(){ // restart
 }
 $("#restartButton").on("click", restart);
 
-function newGame(){ // new game
+function newGame(){ // new game startar ett nytt spel, alla poäng försvinner
     buttonTiles.text("");
     scoreForX.text("X-0");
     scoreForO.text("O-0");
